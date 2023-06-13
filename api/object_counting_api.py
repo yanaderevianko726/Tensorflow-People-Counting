@@ -96,7 +96,7 @@ def cumulative_object_counting_x_axis(input_video, detection_graph, category_ind
             cap.release()
             cv2.destroyAllWindows()
 
-def cumulative_object_counting_y_axis(detection_graph, category_index, is_color_recognition_enabled, roi, deviation, custom_object_name, targeted_objects=None):
+def cumulative_object_counting_y_axis(input_video, detection_graph, category_index, is_color_recognition_enabled, roi, deviation, custom_object_name, targeted_objects=None):
         total_passed_objects = 0
         
         cap = cv2.VideoCapture(0)
