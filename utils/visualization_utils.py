@@ -23,9 +23,6 @@ import os
 # string utils - import
 from utils.string_utils import custom_string_util
 
-# image utils - image saver import
-from utils.image_utils import image_saver
-
 #  predicted_speed predicted_color module - import
 from utils.object_counting_module import object_counter_y_axis
 #  predicted_speed predicted_color module - import
@@ -229,9 +226,7 @@ def draw_bounding_box_on_image(current_frame_number,image,
     predicted_direction, is_object_detected, update_csv = object_counter_x_axis.count_objects_x_axis(top, bottom, right, left, detected_object_image, roi_position[0], roi_position[0]+deviation_value[0], roi_position[0]+(deviation_value[0]*2), deviation_value[0])
   elif(y_axis[0] == 1):
     predicted_direction, is_object_detected, update_csv = object_counter_y_axis.count_objects(top, bottom, right, left, detected_object_image, roi_position[0], roi_position[0]+deviation_value[0], roi_position[0]+(deviation_value[0]*2), deviation_value[0])
-  elif(standalone_image[0] == 1):
-    image_saver.save_image(detected_object_image) # save detected object image
-
+  
   if(is_color_recognition_enable[0]):
     predicted_color = color_recognition_api.color_recognition(detected_object_image)    
   
