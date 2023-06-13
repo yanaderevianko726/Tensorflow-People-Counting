@@ -16,8 +16,6 @@ def cumulative_object_counting_x_axis(detection_graph, category_index, is_color_
 
         height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-        fps = int(cap.get(cv2.CAP_PROP_FPS))
-        color = "waiting..."
         
         with detection_graph.as_default():
           with tf.compat.v1.Session(graph=detection_graph) as sess:
@@ -56,16 +54,16 @@ def cumulative_object_counting_x_axis(detection_graph, category_index, is_color_
 
                 # Visualization of the results of a detection.        
                 counter, csv_line, counting_result = vis_util.visualize_boxes_and_labels_on_image_array_x_axis(cap.get(1),
-                                                                                                             input_frame,
-                                                                                                             is_color_recognition_enabled,
-                                                                                                             np.squeeze(boxes),
-                                                                                                             np.squeeze(classes).astype(np.int32),
-                                                                                                             np.squeeze(scores),
-                                                                                                             category_index,
-                                                                                                             x_reference = roi,
-                                                                                                             deviation = deviation,
-                                                                                                             use_normalized_coordinates=True,
-                                                                                                             line_thickness=4)
+                                                                                                            input_frame,
+                                                                                                            is_color_recognition_enabled,
+                                                                                                            np.squeeze(boxes),
+                                                                                                            np.squeeze(classes).astype(np.int32),
+                                                                                                            np.squeeze(scores),
+                                                                                                            category_index,
+                                                                                                            x_reference = roi,
+                                                                                                            deviation = deviation,
+                                                                                                            use_normalized_coordinates=True,
+                                                                                                            line_thickness=4)
                                
                 # when the object passed over line and counted, make the color of ROI line green
                 if counter == 1:
@@ -74,12 +72,14 @@ def cumulative_object_counting_x_axis(detection_graph, category_index, is_color_
                   cv2.line(input_frame, (roi, 0), (roi, height), (0, 0, 0xFF), 5)
 
                 total_passed_objects = total_passed_objects + counter
+                
+                input_frame = cv2.flip(input_frame, 1)
 
                 # insert information text to video frame
                 font = cv2.FONT_HERSHEY_SIMPLEX
                 cv2.putText(
                     input_frame,
-                    'Detected ' + custom_object_name + ': ' + str(total_passed_objects),
+                    'Detected: ' + str(total_passed_objects),
                     (10, 35),
                     font,
                     0.8,
@@ -87,9 +87,9 @@ def cumulative_object_counting_x_axis(detection_graph, category_index, is_color_
                     2,
                     cv2.FONT_HERSHEY_SIMPLEX,
                     )
-                print("counter: %d" %counter)
+                print("total_passed_objects: %d" %total_passed_objects)
                 
-                cv2.imshow('object counting',input_frame)
+                cv2.imshow('object counting', input_frame)
 
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
@@ -97,21 +97,14 @@ def cumulative_object_counting_x_axis(detection_graph, category_index, is_color_
             cap.release()
             cv2.destroyAllWindows()
 
-def cumulative_object_counting_y_axis(input_video, detection_graph, category_index, is_color_recognition_enabled, roi, deviation, custom_object_name, targeted_objects=None):
-        total_passed_objects = 0        
-
-        # input video
-        cap = cv2.VideoCapture(input_video)
-
+def cumulative_object_counting_y_axis(detection_graph, category_index, is_color_recognition_enabled, roi, deviation, custom_object_name, targeted_objects=None):
+        total_passed_objects = 0
+        
+        cap = cv2.VideoCapture(0)
+        
         height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-        fps = int(cap.get(cv2.CAP_PROP_FPS))
-
-        fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        output_movie = cv2.VideoWriter('the_output.avi', fourcc, fps, (width, height))
-
-        total_passed_objects = 0
-        color = "waiting..."
+        
         with detection_graph.as_default():
           with tf.compat.v1.Session(graph=detection_graph) as sess:
             # Definite input and output Tensors for detection_graph
@@ -127,7 +120,7 @@ def cumulative_object_counting_y_axis(input_video, detection_graph, category_ind
             num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 
             # for all the frames that are extracted from input video
-            while(cap.isOpened()):
+            while True:
                 ret, frame = cap.read()                
 
                 if not  ret:
@@ -171,31 +164,20 @@ def cumulative_object_counting_y_axis(input_video, detection_graph, category_ind
 
                 # insert information text to video frame
                 font = cv2.FONT_HERSHEY_SIMPLEX
+                
+                input_frame = cv2.flip(input_frame, 1)
                 cv2.putText(
                     input_frame,
-                    'Detected ' + custom_object_name + ': ' + str(total_passed_objects),
+                    'Detected: ' + str(total_passed_objects),
                     (10, 35),
                     font,
                     0.8,
                     (0, 0xFF, 0xFF),
                     2,
-                    cv2.FONT_HERSHEY_SIMPLEX,
-                    )               
-                
-                cv2.putText(
-                    input_frame,
-                    'ROI Line',
-                    (545, roi-10),
                     font,
-                    0.6,
-                    (0, 0, 0xFF),
-                    2,
-                    cv2.LINE_AA,
-                    )
-
-                output_movie.write(input_frame)
-                print ("writing frame")
-                #cv2.imshow('object counting',input_frame)
+                    ) 
+                
+                cv2.imshow('object counting',input_frame)
 
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                         break

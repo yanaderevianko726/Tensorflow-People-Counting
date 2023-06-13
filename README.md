@@ -65,14 +65,6 @@ More info can be found in [**here**](https://github.com/ahmetozlu/tensorflow_obj
   <img src="https://user-images.githubusercontent.com/22610163/62861574-9d6e0080-bd0c-11e9-9e38-b63226df8aa1.gif" | width=750>
 </p>
 
-**Sample Project#2: Barilla-Spaghetti Counting**
-
-More info can be found in [**here**](https://github.com/ahmetozlu/tensorflow_object_counting_api/tree/master/mask_rcnn_counting_api_keras_tensorflow/barilla_spaghetti_counter_training)!
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/22610163/62903429-46e3df00-bd6b-11e9-9f97-4de477fa8769.png" | width=750>  
-</p>
-
 ---
 
 ***The development is on progress! The API will be updated soon, the more talented and light-weight API will be available in this repo!***
