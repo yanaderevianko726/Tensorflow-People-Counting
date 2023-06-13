@@ -8,7 +8,7 @@ from utils import visualization_utils as vis_util
 
 total_passed_objects = 0  
 
-def cumulative_object_counting_x_axis(detection_graph, category_index, is_color_recognition_enabled, roi, deviation, custom_object_name, targeted_objects):
+def cumulative_object_counting_x_axis(input_video, detection_graph, category_index, is_color_recognition_enabled, roi, deviation, custom_object_name, targeted_objects):
         total_passed_objects = 0              
 
         # input video
