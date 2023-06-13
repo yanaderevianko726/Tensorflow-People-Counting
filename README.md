@@ -31,22 +31,6 @@ The TensorFlow Object Counting API is an open source framework built on top of T
   <img src="https://user-images.githubusercontent.com/22610163/70389764-e9883380-19d4-11ea-8c54-80935811c3fa.gif" | width=825>
 </p>
 
-- Tracking module was built on top of [this approach](https://github.com/kcg2015/Vehicle-Detection-and-Tracking).
-
----
-
-### Object Counting based R-CNN ([Keras and TensorFlow implementation](https://github.com/ahmetozlu/tensorflow_object_counting_api/tree/master/mask_rcnn_counting_api)):
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/22610163/57969852-0569b080-7983-11e9-8051-07d6766ca0e4.png" | width=750></p>
-
-### Object Segmentation & Counting based Mask R-CNN ([Keras and TensorFlow implementation](https://github.com/ahmetozlu/tensorflow_object_counting_api/tree/master/mask_rcnn_counting_api)):
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/22610163/57969871-1c100780-7983-11e9-9660-7b8571b01ff7.png" | width=750></p>
-
----
-
 ## USAGE
 
 ### 1.) Usage of "Cumulative Counting Mode"
@@ -69,10 +53,6 @@ The TensorFlow Object Counting API is an open source framework built on top of T
 
 ---
 
-**Source code of "pedestrian counting case-study": [pedestrian_counting.py](https://github.com/ahmetozlu/tensorflow_object_counting_api/blob/master/pedestrian_counting.py)**
-
----
-
 **1.2)** For detecting, tracking and counting *the vehicles* with enabled color prediction
 
 *Usage of "Cumulative Counting Mode" for the "vehicle counting" case:*
@@ -88,10 +68,6 @@ The TensorFlow Object Counting API is an open source framework built on top of T
  <p align="center">
   <img src="https://user-images.githubusercontent.com/22610163/43166455-45964aac-8f9f-11e8-9ddf-f71d05f0c7f5.gif" | width=700>
 </p>
-
----
-
-**Source code of "vehicle counting case-study": [vehicle_counting.py](https://github.com/ahmetozlu/tensorflow_object_counting_api/blob/master/vehicle_counting.py)**
 
 ---
 
@@ -173,17 +149,7 @@ The TensorFlow Object Counting API is an open source framework built on top of T
   <img src="https://user-images.githubusercontent.com/22610163/42411747-1a215e4a-820a-11e8-8aef-faa500df6836.gif" | width=700>
 </p>
 
-### 3.) Usage of "Object Tracking Mode"
-
-Just run [object_tracking.py](https://github.com/ahmetozlu/tensorflow_object_counting_api/blob/master/object_tracking.py)
-
----
-
-**For sample usages of "Real-Time Counting Mode": [real_time_counting.py](https://github.com/ahmetozlu/tensorflow_object_counting_api/blob/master/real_time_counting.py)**
-
----
-
-*The minimum object detection threshold can be set [in this line](https://github.com/ahmetozlu/tensorflow_object_counting_api/blob/master/utils/visualization_utils.py#L443) in terms of percentage. The default minimum object detecion threshold is 0.5!*
+*The default minimum object detecion threshold is 0.5!*
 
 ## General Capabilities of The TensorFlow Object Counting API
 
@@ -229,9 +195,9 @@ TODOs:
   <img src="https://user-images.githubusercontent.com/22610163/48421362-6662c280-e76d-11e8-9b63-da9698626f75.jpg" | width=720>
 </p>
 
-- Object detection and classification have been developed on top of TensorFlow Object Detection API, [see](https://github.com/tensorflow/models/tree/master/research/object_detection) for more info.
+- Object detection and classification have been developed on top of TensorFlow Object Detection API.
 
-- Object color prediction has been developed using OpenCV via K-Nearest Neighbors Machine Learning Classification Algorithm is Trained Color Histogram Features, [see](https://github.com/ahmetozlu/tensorflow_object_counting_api/tree/master/utils/color_recognition_module) for more info.
+- Object color prediction has been developed using OpenCV via K-Nearest Neighbors Machine Learning Classification Algorithm is Trained Color Histogram Features.
 
 [TensorFlow™](https://www.tensorflow.org/) is an open source software library for numerical computation using data flow graphs. Nodes in the graph represent mathematical operations, while the graph edges represent the multidimensional data arrays (tensors) communicated between them.
 
@@ -244,18 +210,6 @@ TODOs:
 </p>
 
 Source video is read frame by frame with OpenCV. Each frames is processed by ["SSD with Mobilenet" model](http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2017_11_17) is developed on TensorFlow. This is a loop that continue working till reaching end of the video. The main pipeline of the tracker is given at the above Figure.
-
-### Models
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/22610163/48481757-b1d5a900-e81f-11e8-824b-4317115fe5b4.png">
-</p>
-
-By default I use an ["SSD with Mobilenet" model](http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2017_11_17) in this project. You can find more information about SSD in [here](https://towardsdatascience.com/understanding-ssd-multibox-real-time-object-detection-in-deep-learning-495ef744fab). 
-
-Please, See the [detection model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) for a list of other models that can be run out-of-the-box with varying speeds and accuracies. You can easily select, download and use state-of-the-art models that are suitable for your requeirements using TensorFlow Object Detection API.
-
-You can perform transfer learning on trained TensorFlow models to build your custom object counting systems!
 
 ## Installation
 
@@ -279,8 +233,6 @@ Tensorflow Object Counting API depends on the following libraries (see [requirem
 - cocoapi
 
 For detailed steps to install Tensorflow, follow the [Tensorflow installation instructions](https://www.tensorflow.org/install/). 
-
-TensorFlow Object Detection API have to be installed to run TensorFlow Object Counting API, for more information, please see [this](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md).
 
 ### Important: Compatibility problems caused by TensorFlow2 version.
 
