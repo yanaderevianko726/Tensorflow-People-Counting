@@ -21,11 +21,12 @@ roi = 237
 deviation = 4.5 
 
 # set it to your custom object name
-custom_object_name = 'Vehicle' 
-targeted_objects_name = "car, truck"
+custom_object_name = 'Pedestrian' 
+targeted_objects_name = "person"
 
 # counting all the objects
-object_counting_api.cumulative_object_counting_y_axis(detection_graph, category_index, 
+object_counting_api.cumulative_object_counting_y_axis(detection_graph, 
+                                                      category_index, 
                                                       is_color_recognition_enabled, 
                                                       roi, deviation, 
                                                       custom_object_name, 

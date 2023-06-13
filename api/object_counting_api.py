@@ -8,7 +8,7 @@ from utils import visualization_utils as vis_util
 
 total_passed_objects = 0  
 
-def cumulative_object_counting_x_axis(detection_graph, category_index, is_color_recognition_enabled, roi, deviation, custom_object_name):
+def cumulative_object_counting_x_axis(detection_graph, category_index, is_color_recognition_enabled, roi, deviation, custom_object_name, targeted_objects):
         total_passed_objects = 0              
 
         # input video
@@ -33,13 +33,13 @@ def cumulative_object_counting_x_axis(detection_graph, category_index, is_color_
 
             # for all the frames that are extracted from input video
             while True:
-                ret, frame = cap.read()                
+                ret, frame = cap.read()               
 
                 if not  ret:
                     print("end of the video file...")
                     break
                 
-                input_frame = frame
+                input_frame = cv2.flip(frame, 1)
 
                 # Expand dimensions since the model expects images to have shape: [1, None, None, 3]
                 image_np_expanded = np.expand_dims(input_frame, axis=0)
@@ -60,10 +60,11 @@ def cumulative_object_counting_x_axis(detection_graph, category_index, is_color_
                                                                                                             np.squeeze(classes).astype(np.int32),
                                                                                                             np.squeeze(scores),
                                                                                                             category_index,
+                                                                                                            targeted_objects = targeted_objects,
                                                                                                             x_reference = roi,
                                                                                                             deviation = deviation,
                                                                                                             use_normalized_coordinates=True,
-                                                                                                            line_thickness=4)
+                                                                                                            line_thickness=2)
                                
                 # when the object passed over line and counted, make the color of ROI line green
                 if counter == 1:
@@ -72,8 +73,6 @@ def cumulative_object_counting_x_axis(detection_graph, category_index, is_color_
                   cv2.line(input_frame, (roi, 0), (roi, height), (0, 0, 0xFF), 5)
 
                 total_passed_objects = total_passed_objects + counter
-                
-                input_frame = cv2.flip(input_frame, 1)
 
                 # insert information text to video frame
                 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -127,7 +126,7 @@ def cumulative_object_counting_y_axis(detection_graph, category_index, is_color_
                     print("end of the video file...")
                     break
                 
-                input_frame = frame
+                input_frame = cv2.flip(frame, 1)
 
                 # Expand dimensions since the model expects images to have shape: [1, None, None, 3]
                 image_np_expanded = np.expand_dims(input_frame, axis=0)
@@ -165,7 +164,6 @@ def cumulative_object_counting_y_axis(detection_graph, category_index, is_color_
                 # insert information text to video frame
                 font = cv2.FONT_HERSHEY_SIMPLEX
                 
-                input_frame = cv2.flip(input_frame, 1)
                 cv2.putText(
                     input_frame,
                     'Detected: ' + str(total_passed_objects),
