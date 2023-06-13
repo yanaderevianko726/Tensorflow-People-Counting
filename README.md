@@ -257,10 +257,6 @@ Please, See the [detection model zoo](https://github.com/tensorflow/models/blob/
 
 You can perform transfer learning on trained TensorFlow models to build your custom object counting systems!
 
-## Project Demo
-
-Demo video of the project is available on [My YouTube Channel](https://www.youtube.com/watch?v=bas6c8d1JyU).
-
 ## Installation
 
 ### Dependencies
