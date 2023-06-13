@@ -35,12 +35,6 @@ The TensorFlow Object Counting API is an open source framework built on top of T
 
 ---
 
-### Object Counting On Single Image (TensorFlow implementation):
-<p align="center">
-<img src="https://user-images.githubusercontent.com/22610163/47524870-7c830e80-d8a4-11e8-8fd1-741193615a04.png" | width=750></p>
-
----
-
 ### Object Counting based R-CNN ([Keras and TensorFlow implementation](https://github.com/ahmetozlu/tensorflow_object_counting_api/tree/master/mask_rcnn_counting_api)):
 
 <p align="center">
@@ -50,28 +44,6 @@ The TensorFlow Object Counting API is an open source framework built on top of T
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/22610163/57969871-1c100780-7983-11e9-9660-7b8571b01ff7.png" | width=750></p>
-
----
-
-### BONUS: Custom Object Counting Mode (TensorFlow implementation):
-
-You can train TensorFlow models with your own training data to built your own custom object counter system! If you want to learn how to do it, please check one of the sample projects, which cover some of the theory of transfer learning and show how to apply it in useful projects, are given at below.
-
-**Sample Project#1: Smurf Counting**
-
-More info can be found in [**here**](https://github.com/ahmetozlu/tensorflow_object_counting_api/tree/master/smurf_counter_training)!
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/22610163/62861574-9d6e0080-bd0c-11e9-9e38-b63226df8aa1.gif" | width=750>
-</p>
-
----
-
-***The development is on progress! The API will be updated soon, the more talented and light-weight API will be available in this repo!***
-
-- ***Detailed API documentation and sample jupyter notebooks that explain basic usages of API will be added!***
-
-**You can find a sample project - case study that uses TensorFlow Object Counting API in [*this repo*](https://github.com/ahmetozlu/vehicle_counting_tensorflow).**
 
 ---
 
