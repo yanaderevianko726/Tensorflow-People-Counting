@@ -295,16 +295,6 @@ use this:
     import tensorflow.compat.v1 as tf
     tf.disable_v2_behavior()
 
-## Citation
-If you use this code for your publications, please cite it as:
-
-    @ONLINE{
-        author = "Ahmet Özlü",
-        title  = "TensorFlow Object Counting API",
-        year   = "2018",
-        url    = "https://github.com/ahmetozlu/tensorflow_object_counting_api"
-    }
-
 ## Author
 Yana Derevianko
 
