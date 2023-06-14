@@ -645,7 +645,7 @@ def visualize_boxes_and_labels_on_image_array_x_axis(current_frame_number,
                                               max_boxes_to_draw=20,
                                               min_score_thresh=.5,
                                               agnostic_mode=False,
-                                              line_thickness=4):
+                                              line_thickness=2):
   """Overlay labeled boxes on an image with formatted scores and label names.
 
   This function groups boxes that correspond to the same location
@@ -682,6 +682,7 @@ def visualize_boxes_and_labels_on_image_array_x_axis(current_frame_number,
   """
   # Create a display string (and color) for every box location, group any boxes
   # that correspond to the same location.
+  
   csv_line_util = "not_available"
   counter = 0
   roi_position.insert(0,x_reference)
@@ -693,8 +694,10 @@ def visualize_boxes_and_labels_on_image_array_x_axis(current_frame_number,
   box_to_color_map = collections.defaultdict(str)
   box_to_instance_masks_map = {}
   box_to_keypoints_map = collections.defaultdict(list)
+  
   if not max_boxes_to_draw:
     max_boxes_to_draw = boxes.shape[0]
+    
   for i in range(min(max_boxes_to_draw, boxes.shape[0])):
     if scores is None or scores[i] > min_score_thresh:
       box = tuple(boxes[i].tolist())
