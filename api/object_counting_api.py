@@ -79,7 +79,7 @@ def main_peoson_count(input_video, detection_graph, category_index, is_color_rec
             font = cv2.FONT_HERSHEY_SIMPLEX
             cv2.putText(
                 input_frame,
-                'Detected: ' + str(total_passed_objects) + ', boxes: ' + str(len(boxes)),
+                'Detected: ' + str(total_passed_objects),
                 (10, 35),
                 font,
                 0.8,
