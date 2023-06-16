@@ -718,6 +718,7 @@ def visualize_boxes_and_labels_on_image_array_x_axis(current_frame_number,
           display_str = 'score: {}%'.format(int(100 * scores[i]))        
 
         box_to_display_str_map[box].append(display_str)
+        
         if agnostic_mode:
           box_to_color_map[box] = 'DarkOrange'
         else:

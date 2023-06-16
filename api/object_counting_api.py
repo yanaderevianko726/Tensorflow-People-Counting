@@ -1,5 +1,6 @@
 
-import tensorflow as tf
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import csv
 import cv2
 import numpy as np
@@ -18,7 +19,7 @@ def cumulative_object_counting_x_axis(input_video, detection_graph, category_ind
         width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         
         with detection_graph.as_default():
-          with tf.compat.v1.Session(graph=detection_graph) as sess:
+          with tf.Session(graph=detection_graph) as sess:
             # Definite input and output Tensors for detection_graph
             image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
 
@@ -105,7 +106,7 @@ def cumulative_object_counting_y_axis(input_video, detection_graph, category_ind
         width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         
         with detection_graph.as_default():
-          with tf.compat.v1.Session(graph=detection_graph) as sess:
+          with tf.Session(graph=detection_graph) as sess:
             # Definite input and output Tensors for detection_graph
             image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
 
@@ -201,7 +202,7 @@ def object_counting(input_video, detection_graph, category_index, is_color_recog
         height = 0
         width = 0
         with detection_graph.as_default():
-          with tf.compat.v1.Session(graph=detection_graph) as sess:
+          with tf.Session(graph=detection_graph) as sess:
             # Definite input and output Tensors for detection_graph
             image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
 
@@ -264,7 +265,7 @@ def object_counting_webcam(detection_graph, category_index, is_color_recognition
 
         color = "waiting..."
         with detection_graph.as_default():
-          with tf.compat.v1.Session(graph=detection_graph) as sess:
+          with tf.Session(graph=detection_graph) as sess:
             # Definite input and output Tensors for detection_graph
             image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
 
@@ -346,7 +347,7 @@ def targeted_object_counting(input_video, detection_graph, category_index, is_co
         height = 0
         width = 0
         with detection_graph.as_default():
-          with tf.compat.v1.Session(graph=detection_graph) as sess:
+          with tf.Session(graph=detection_graph) as sess:
             # Definite input and output Tensors for detection_graph
             image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
 
@@ -410,7 +411,7 @@ def targeted_object_counting(input_video, detection_graph, category_index, is_co
 def single_image_object_counting(input_video, detection_graph, category_index, is_color_recognition_enabled):     
         color = "waiting..."
         with detection_graph.as_default():
-          with tf.compat.v1.Session(graph=detection_graph) as sess:
+          with tf.Session(graph=detection_graph) as sess:
             # Definite input and output Tensors for detection_graph
             image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
 

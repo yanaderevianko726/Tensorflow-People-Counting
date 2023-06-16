@@ -2,7 +2,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from collections import deque
-from sklearn.utils.linear_assignment_ import linear_assignment
+# from sklearn.utils.linear_assignment_ import linear_assignment
+from scipy.optimize import linear_sum_assignment as linear_assignment
 
 import detection_layer
 import cv2
@@ -29,11 +30,11 @@ def assign_detections_to_trackers(trackers, detections, iou_thrd = 0.3):
     unmatched_trackers, unmatched_detections = [], []
     for t,trk in enumerate(trackers):
         if(t not in matched_idx[:,0]):
-            unmatched_trackers.append(t)
+            unmatched_trackers.append(int(t))
 
     for d, det in enumerate(detections):
         if(d not in matched_idx[:,1]):
-            unmatched_detections.append(d)
+            unmatched_detections.append(int(d))
 
     matches = []
     

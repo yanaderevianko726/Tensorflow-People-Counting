@@ -21,7 +21,8 @@ DetectionModel.
 
 import functools
 
-import tensorflow as tf
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from object_detection.builders import optimizer_builder
 from object_detection.builders import preprocessor_builder
