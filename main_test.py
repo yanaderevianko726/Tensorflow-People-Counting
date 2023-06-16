@@ -25,11 +25,11 @@ custom_object_name = 'Pedestrian'
 targeted_objects_name = "person"
 
 # counting all the objects
-object_counting_api.cumulative_object_counting_x_axis(input_video,
-                                                    detection_graph, 
-                                                    category_index, 
-                                                    is_color_recognition_enabled, 
-                                                    roi, 
-                                                    deviation, 
-                                                    custom_object_name, 
-                                                    targeted_objects_name) 
+object_counting_api.main_peoson_count(input_video,
+                                    detection_graph, 
+                                    category_index, 
+                                    is_color_recognition_enabled, 
+                                    roi, 
+                                    deviation, 
+                                    custom_object_name, 
+                                    targeted_objects_name) 
